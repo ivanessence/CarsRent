@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #8a8a79;
+	background: #EEE9BF;
+}
+
+#templatemo_menu {
+	text-align: center;
+	font-size: 20px;
+}
+
+#picture {
+	text-align: center;
+	font-size: 15px;
+}
