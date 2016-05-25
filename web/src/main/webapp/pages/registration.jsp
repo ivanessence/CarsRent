@@ -11,7 +11,7 @@
 		<form name="registrationForm" method="POST" action="controller">
 			
 			Введите ваши данные:<br/>
-			<table>
+			<table align="center">
 				<tr>
 					<td>ФИО:</td>
 					<td><input type="text" name="fio" value="" size="20"/></td>
@@ -29,16 +29,21 @@
 					<td>Пароль:</td>
 					<td><input type="text" name="password" value="" size="20"/></td>
 				</tr>
-				<tr>
-					<td><input type="submit" name="command" value="create" /></td>
-					<td><a href="controller?command=goindex">НА ГЛАВНУЮ</a></td>
-				</tr>
+
 				</table>
+			<input type="submit" class="bu bu1" name="command" value="create" />
+			<a href="controller?command=goindex">НА ГЛАВНУЮ</a>
 				${success}	
 				${operationMessage} 
 			${errorUserExsists}
 				</form>
-		
-		
+
+		<h2 class="two">CAR RENT</h2>
+
+		<div class="foot">
+			<h1>©2016 by Ivan Bolotin</h1>
+
+		</div>
+
 	</body>
 </html>
