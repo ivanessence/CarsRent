@@ -1,6 +1,6 @@
 <%@ page language="java" 
 	contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" errorPage="/jsp/error/error.jsp"%>
+	pageEncoding="UTF-8" errorPage="/pages/error.jsp"%>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <html>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -28,12 +28,13 @@
 				<tr>
 					<td>Пароль:</td>
 					<td><input type="text" name="password" value="" size="20"/></td>
+					${emptyf}
 				</tr>
 
 				</table>
 			<input type="submit" class="bu bu1" name="command" value="create" />
 			<a href="controller?command=goindex">НА ГЛАВНУЮ</a>
-				${success}	
+
 				${operationMessage} 
 			${errorUserExsists}
 				</form>

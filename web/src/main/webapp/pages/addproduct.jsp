@@ -10,7 +10,7 @@
 
 			ДОБАВИТЬ АВТО<br/>
 			Введите данные авто:<br/>
-			<table>
+			<table align="center">
 				<tr>
 					<td>Модель:</td>
 					<td><input type="text" name="model" value="" size="20"/></td>
@@ -31,7 +31,7 @@
 				
 				</table>
 			УДАЛИТЬ АВТО
-			<table>
+			<table align="center">
 				<tr>
 					<td>Айди:</td>
 					<td><input type="text" name="id" value="" size="20"/></td>

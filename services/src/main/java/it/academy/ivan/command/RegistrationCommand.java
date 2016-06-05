@@ -33,17 +33,20 @@ public class RegistrationCommand implements ActionCommand{
 		passport = request.getParameter("passport");
 		login = request.getParameter("login");
 		password = request.getParameter("password");
-		
-		try {
-			registrate();
+		if (fio == "" || passport == "" || login == "" || password == "") {
 			page = ConfigurationManager.getProperty("path.page.registration");
-			 request.setAttribute("success", MessageManager.getProperty("message.success"));
-			
-		}catch (NumberFormatException e) {
-			PaymentSystemLogger.INSTANCE.logError(getClass(), e.getMessage());
-			page = ConfigurationManager.getProperty("path.page.login");
+			request.setAttribute("emptyf", MessageManager.getProperty("message.emptyfields"));
+		} else {
+			try {
+				registrate();
+				page = ConfigurationManager.getProperty("path.page.registration");
+				request.setAttribute("success", MessageManager.getProperty("message.success"));
+
+			} catch (NumberFormatException e) {
+				PaymentSystemLogger.INSTANCE.logError(getClass(), e.getMessage());
+				page = ConfigurationManager.getProperty("path.page.login");
+			}
 		}
-		
 		return page;
 	}
 
