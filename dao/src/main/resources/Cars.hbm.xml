@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <class name="it.academy.ivan.entity.Cars" table="cars">
+        <id name="car_id" type="int" column="car_id" >
+            <generator class="assigned"/>
+        </id>
+        <property name="model">
+            <column name="model" />
+        </property>
+        <property name="year">
+            <column name="year"/>
+        </property>
+        <property name="color">
+            <column name="color"/>
+        </property>
+    </class>
+</hibernate-mapping>

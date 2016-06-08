@@ -10,7 +10,9 @@ import java.util.List;
 
 import it.academy.ivan.entity.Cars;
 import it.academy.ivan.entity.Client;
-
+import it.academy.ivan.hibernate.HibernateSessionManager;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 
 public class DAOCars implements InterfaceDAO<Cars> {
@@ -24,49 +26,21 @@ public class DAOCars implements InterfaceDAO<Cars> {
 	private static final String DBPASSWORD = "root";
 	static Connection connection = null;
 	static PreparedStatement preparedStatement = null;
+	protected Transaction trans;
 
 
 	public DAOCars() {
-		try {
-			Class.forName(DRIVER);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			connection = DriverManager.getConnection(DBURL, DBLOGIN, DBPASSWORD);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		
-		}
+
 	}
 
 	@Override
 	public void add(Cars car) {
 
-		try {
-
-			preparedStatement = connection.prepareStatement(SQL_QUERY_ADD_CAR);
-			preparedStatement.setString(1, car.getModel());
-			preparedStatement.setString(2, car.getYear());
-			preparedStatement.setString(3, car.getColor());
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			System.out.println("SQL exception occurred during add client");
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null) {
-					preparedStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				System.out.println("SQL exception occurred during add client");
-				e.printStackTrace();
-			}
-		}
+		Session sess = HibernateSessionManager.getSessionFactory().openSession();
+		trans = sess.beginTransaction();
+		sess.saveOrUpdate(car);
+		sess.update(car);
+		trans.commit();
 	}
 
 	@Override

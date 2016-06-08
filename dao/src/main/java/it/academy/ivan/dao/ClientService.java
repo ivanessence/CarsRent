@@ -5,7 +5,7 @@ import java.util.List;
 import it.academy.ivan.entity.Cars;
 import it.academy.ivan.entity.Client;
 
-public class ClientService {
+public class ClientService <T> {
     private InterfaceDAO interfaceDAO;
     private InterfaceDAO carsDAO;
 
@@ -14,15 +14,15 @@ public class ClientService {
         carsDAO = new DAOCars();
     }
 
-    public void addClient(Client client) {
+    public void addClient(T client) {
         interfaceDAO.add(client);
     }
     
-    public void addCar(Cars car) {
+    public void addCar(T car) {
         carsDAO.add(car);
     }
 
-    public void deleteCar(Cars car) {
+    public void deleteCar(T car) {
         carsDAO.delete(car);
     }
 
