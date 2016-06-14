@@ -15,30 +15,30 @@
 			<table align="center">
 				<tr>
 					<td>ФИО:</td>
-					<td><input type="text" name="fio" value="" size="20" required/></td>
+					<td><input type="text" name="fio" value="" size="20"/> <span id="xxx" style="color: yellow;"></span></td>
 				</tr>
 				<tr>
 					<td>Пасспорт:</td>
-					<td><input type="text" name="passport" value="" size="20" required/></td>
+					<td><input type="text" name="passport" value="" size="20"/></td>
 				</tr>
 				
 				<tr>
 					<td>Логин:</td>
-					<td><input type="text" name="login" value="" size="20" required/></td>
+					<td><input type="text" name="login" value="" size="20"/><span id="yyy" style="color: yellow;"></span></td>
 				</tr>
 				<tr>
 					<td>Пароль:</td>
-					<td><input type="password" name="password" value="" size="20" required/></td>
+					<td><input type="password" name="password" value="" size="20"/><span id="www" style="color: yellow;"></span></td>
 				<tr>
 					<td>Повторите пароль:</td>
-					<td><input type="password" name="password2" value="" size="20" required/></td>
-					<span id="confirmMessage" class="confirmMessage"></span>
+					<td><input type="password" name="password2" value="" size="20"/><span id="qqq" style="color: yellow;"></span></td>
+
 				</tr>
 					${emptyf}
 				</tr>
 
 				</table>
-			<input type="submit" class="bu bu1" name="command" value="create" onclick="return checkPass()"/>
+			<input type="submit" class="bu bu1" name="command" value="create" onclick="return valid()"/>
 			<a href="controller?command=goindex">НА ГЛАВНУЮ</a>
 
 				${operationMessage} 

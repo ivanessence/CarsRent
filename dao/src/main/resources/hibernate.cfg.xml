@@ -11,5 +11,6 @@
         <property name="hibernate.connection.password">root</property>
         <property name="show_sql">false</property>
         <mapping resource="Cars.hbm.xml"></mapping>
+        <mapping resource="Clients.hbm.xml"></mapping>
     </session-factory>
 </hibernate-configuration>

@@ -22,10 +22,10 @@ public class LoginCommand implements ActionCommand {
 		String login = request.getParameter(PARAM_NAME_LOGIN);
 		String pass = request.getParameter(PARAM_NAME_PASSWORD);
 		// проверка логина и пароля
-		if (ClientDAOImpl.isAuthorized(login, pass)) {
+		if (us.isAuthorized(login, pass)) {
 			request.setAttribute("user", login);
 			HttpSession session = request.getSession(true);
-			ClientType userType = ClientDAOImpl.checkAccessLevel(login);
+			ClientType userType = us.checkAccessLevel(login);
 			// определение пути к main.jsp
 			
 			

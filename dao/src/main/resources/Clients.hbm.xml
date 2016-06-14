@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <class name="it.academy.ivan.entity.Client" table="clients">
+        <id name="client_id" type="int" column="client_id" >
+            <generator class="assigned"/>
+        </id>
+        <property name="fio">
+            <column name="fio" />
+        </property>
+        <property name="passport">
+            <column name="passport"/>
+        </property>
+        <property name="login">
+            <column name="login"/>
+        </property>
+        <property name="password">
+            <column name="password"/>
+        </property>
+        <property name="role">
+            <column name="role"/>
+        </property>
+    </class>
+</hibernate-mapping>

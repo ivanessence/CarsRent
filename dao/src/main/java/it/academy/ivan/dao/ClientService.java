@@ -17,7 +17,7 @@ public class ClientService <T> {
     public void addClient(T client) {
         interfaceDAO.add(client);
     }
-    
+
     public void addCar(T car) {
         carsDAO.add(car);
     }
