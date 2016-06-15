@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import it.academy.ivan.dao.ClientService;
 
+import it.academy.ivan.dao.EventDao;
 import it.academy.ivan.entity.Client;
 import it.academy.ivan.logger.PaymentSystemLogger;
 import it.academy.ivan.managers.ConfigurationManager;
@@ -53,8 +54,8 @@ public class RegistrationCommand implements ActionCommand{
 	private void registrate(){
 		
 		Client newClient = new Client(fio,passport, login, password, 1, 0);
-		ClientService clientService = new ClientService();
-		clientService.addClient(newClient);
+		EventDao ev = new EventDao();
+		ev.create(newClient);
 		
 	}
 }

@@ -3,6 +3,7 @@ package it.academy.ivan.command;
 import javax.servlet.http.HttpServletRequest;
 
 import it.academy.ivan.dao.ClientService;
+import it.academy.ivan.dao.EventDao;
 import it.academy.ivan.entity.Cars;
 import it.academy.ivan.managers.ConfigurationManager;
 import it.academy.ivan.managers.MessageManager;
@@ -32,8 +33,8 @@ public class AddProduct implements ActionCommand {
 	}
 	public void addProduct(String model, String year, String color){
 		Cars newCar = new Cars(model, year, color);
-		ClientService clientService = new ClientService();
-		clientService.addCar(newCar);
+		EventDao ev = new EventDao();
+		ev.create(newCar);
 
 	}
 }

@@ -19,7 +19,7 @@
 				</tr>
 				<tr>
 					<td>Пасспорт:</td>
-					<td><input type="text" name="passport" value="" size="20"/></td>
+					<td><input type="text" name="passport" value="" size="20"/><span id="zzz" style="color: green;"></span></td>
 				</tr>
 				
 				<tr>

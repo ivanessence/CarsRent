@@ -2,34 +2,26 @@ package it.academy.ivan.dao;
 
 
 import it.academy.ivan.entity.Client;
-import it.academy.ivan.hibernate.HibernateSessionManager;
+
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 import java.util.List;
 
-public class ClientDAOImpl implements InterfaceDAO<Client> {
+import static it.academy.ivan.hibernate.HibernateUtil.*;
 
-    protected Transaction trans;
+public class ClientDAOImpl implements InterfaceDAO<Client> {
 
     public ClientDAOImpl() {
 
     }
 
-    public void add(Client client) { //регистрация
-
-        Session sess = HibernateSessionManager.getSessionFactory().openSession();
-        trans = sess.beginTransaction();
-        sess.saveOrUpdate(client);
-        sess.update(client);
-        trans.commit();
-    }
-
     public boolean isAuthorized(String login, String password) {
         boolean isLogIn = false;
 
-        Session sess = HibernateSessionManager.getSessionFactory().openSession();
-        trans = sess.beginTransaction();
+        Session sess = currentSession();
+        beginTransaction();
         String hql = "Select login From Client WHERE login = :login";
         String sql = " from Client u where u.login=:lg and u.password=:pass";
         Query query = sess.createQuery(sql);
@@ -45,8 +37,8 @@ public class ClientDAOImpl implements InterfaceDAO<Client> {
 
     public ClientType checkAccessLevel(String login) {
         ClientType userType = null;
-        Session sess = HibernateSessionManager.getSessionFactory().openSession();
-        trans = sess.beginTransaction();
+        Session sess = currentSession();
+        beginTransaction();
         String hql = "Select role From Client WHERE login = :login";
         Query qu = sess.createQuery(hql);
         qu.setParameter("login", login);
@@ -63,14 +55,19 @@ public class ClientDAOImpl implements InterfaceDAO<Client> {
     }
 
     public List<Client> getFromDb() {
-        Session sess = HibernateSessionManager.getSessionFactory().openSession();
-        trans = sess.beginTransaction();
-        String hql = "From Client";
-        Query qu = sess.createQuery(hql);
-        qu.setFirstResult(0);
-        qu.setMaxResults(2);
-        List<Client> list = qu.list();
+        List<Client> list = null;
+        try {
+            Session sess = currentSession();
+            beginTransaction();
+            String hql = "From Client";
+            Query qu = sess.createQuery(hql);
+            list = qu.list();
+        } catch (HibernateException e) {
+            rollbackTransaction();
 
+        } finally {
+            closeSession();
+        }
         return list;
 
     }

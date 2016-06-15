@@ -31,7 +31,7 @@ function valid()
 
     var z = document.forms["registrationForm"]["passport"].value;
     if (z == null || z == "") {
-        alert("Empty field PASSWORD");
+        document.getElementById("zzz").innerHTML="Empty field";
         return false;
     }
 
@@ -40,4 +40,5 @@ function valid()
         document.getElementById("qqq").innerHTML="Empty field";
         return false;
     }
+    return  alert("You are successfully registered");
 }

@@ -20,7 +20,20 @@
 					<td><c:out value="${ car.year }" /></td>
 					<td><c:out value="${ car.color }" /></td>
 				</tr>
+
 			</c:forEach>
+
+
+		</table>
+		<table>
+		<tr>
+			<a href="controller?command=p1">1</a>
+			<a href="controller?command=p2">2</a>
+			<a href="controller?command=p3">3</a>
+			<a href="controller?command=p4">4</a>
+
+
+		</tr>
 		</table>
 		<a href="controller?command=backuser">Вернуться обратно</a>
 		<a href="controller?command=logout">Выйти из системы</a>

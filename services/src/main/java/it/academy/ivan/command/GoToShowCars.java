@@ -22,7 +22,7 @@ public class GoToShowCars implements ActionCommand {
 		HttpSession session = request.getSession();
 		ClientType userType = (ClientType)session.getAttribute("userType");
 		if((userType).equals(ClientType.USER)){
-			List<Cars> list = cars.getFromDb();
+			List<Cars> list = cars.getFromDbs(0);
 			session.setAttribute("carsList", list);
 			page = ConfigurationManager.getProperty("path.page.user.cars");
 		}
