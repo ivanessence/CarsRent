@@ -8,6 +8,5 @@ import it.academy.ivan.entity.Client;
 public interface InterfaceDAO<T> {
 
     List<T> getFromDb();
-    void delete(T object);
     
 }

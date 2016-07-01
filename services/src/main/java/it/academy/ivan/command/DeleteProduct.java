@@ -1,5 +1,6 @@
 package it.academy.ivan.command;
 
+import it.academy.ivan.dao.AbstractDao;
 import it.academy.ivan.dao.ClientService;
 import it.academy.ivan.entity.Cars;
 import it.academy.ivan.managers.ConfigurationManager;
@@ -30,9 +31,8 @@ public class DeleteProduct implements ActionCommand {
     private void addProduct() {
 
         Cars newCar = new Cars(idString);
-        ClientService clientService = new ClientService();
-        clientService.deleteCar(newCar);
-
+        AbstractDao dao = new AbstractDao();
+        dao.delete(newCar);
 
     }
 }

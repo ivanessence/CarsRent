@@ -3,6 +3,7 @@ package it.academy.ivan.dao;
 
 import it.academy.ivan.entity.Client;
 
+import it.academy.ivan.hibernate.HibernateSessionManager;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -21,6 +22,7 @@ public class ClientDAOImpl implements InterfaceDAO<Client> {
         boolean isLogIn = false;
 
         Session sess = currentSession();
+        System.out.println(sess.hashCode());
         beginTransaction();
         String hql = "Select login From Client WHERE login = :login";
         String sql = " from Client u where u.login=:lg and u.password=:pass";
@@ -38,6 +40,7 @@ public class ClientDAOImpl implements InterfaceDAO<Client> {
     public ClientType checkAccessLevel(String login) {
         ClientType userType = null;
         Session sess = currentSession();
+        System.out.println(sess.hashCode());
         beginTransaction();
         String hql = "Select role From Client WHERE login = :login";
         Query qu = sess.createQuery(hql);
@@ -64,18 +67,11 @@ public class ClientDAOImpl implements InterfaceDAO<Client> {
             list = qu.list();
         } catch (HibernateException e) {
             rollbackTransaction();
-
-        } finally {
-            closeSession();
         }
         return list;
 
     }
 
-    @Override
-    public void delete(Client object) {
-
-    }
 
 
 }

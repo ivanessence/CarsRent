@@ -15,10 +15,6 @@ public class ClientService<T> {
     }
 
 
-    public void deleteCar(T car) {
-        carsDAO.delete(car);
-    }
-
     public List<Client> getClients() {
         return interfaceDAO.getFromDb();
     }

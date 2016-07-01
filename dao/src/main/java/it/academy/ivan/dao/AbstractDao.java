@@ -1,8 +1,12 @@
 package it.academy.ivan.dao;
 
+import it.academy.ivan.entity.Cars;
 import it.academy.ivan.hibernate.HibernateSessionManager;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 
 
 import static it.academy.ivan.hibernate.HibernateUtil.*;
@@ -15,18 +19,25 @@ public class AbstractDao<T> {
 
     protected T saveOrUpdate(T obj) {
         try {
-            Session sess = currentSession();
             beginTransaction();
-            sess.saveOrUpdate(obj);
+            currentSession().saveOrUpdate(obj);
             commitTransaction();
         } catch (HibernateException e) {
             rollbackTransaction();
-
-        } finally {
-            closeSession();
         }
         return obj;
 
+    }
+    public void delete(T car) {
+        try {
+            Session sess = currentSession();
+            System.out.println(sess.hashCode());
+            beginTransaction();
+            sess.delete(car);
+            commitTransaction();
+        } catch (HibernateException e) {
+            rollbackTransaction();
+        }
     }
 }
 

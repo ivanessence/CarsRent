@@ -27,10 +27,10 @@ public class SessionLoginFilter implements javax.servlet.Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         Session session = HibernateUtil.currentSession();
-        System.out.print("1");
+        System.out.println(session.hashCode());
         filterChain.doFilter(request, response);
         HibernateUtil.closeSession();
-        System.out.print("2");
+        System.out.println(session.hashCode());
 
     }
 
