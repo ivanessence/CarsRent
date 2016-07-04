@@ -7,8 +7,12 @@ import it.academy.ivan.dao.EventDao;
 import it.academy.ivan.entity.Cars;
 import it.academy.ivan.managers.ConfigurationManager;
 import it.academy.ivan.managers.MessageManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AddProduct implements ActionCommand {
+
 
 	private static String model;
 	private static String color;

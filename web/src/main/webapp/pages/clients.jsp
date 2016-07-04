@@ -13,7 +13,7 @@
 					<td align="center"><strong>Фамилия</strong></td>
 					<td align="center"><strong>Имя</strong></td>
 			</tr>
-			<c:forEach var="client" items="${userList}">
+			<c:forEach var="client" items="${lists}">
 				<tr>
 					<td><c:out value="${ client.fio }" /></td>
 					<td><c:out value="${ client.passport }" /></td>
@@ -22,5 +22,6 @@
 		</table>
 		<a href="controller?command=backadmin">Вернуться обратно</a>
 		<a href="controller?command=logout">Выйти из системы</a>
+
 	</body>
 </html>

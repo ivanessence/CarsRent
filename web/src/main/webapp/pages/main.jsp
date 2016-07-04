@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -9,8 +10,15 @@
 <hr/>
 Links for admin...<br/>
 
-<a href="controller?command=logout">Logout</a>
-<a href="controller?command=clients">Показать список клиентов</a> <br/>
+<form name = "ee" method="POST" action="/clients">
+ <input type="submit" class="bu bu1" name="ee" value="ShowClients"/>
+</form>
+
+<form name = "e" method="POST" action="/goaddauto">
+ <input type="submit" class="bu bu1" name="ee" value="AddAuto"/>
+</form>
+
 <a href="controller?command=gotoaddproduct">Добавить авто</a> <br/>
+<a href='<c:url value="/j_spring_security_logout" />' > Logout</a>
 Debug info - session = ${sessionScope}
 </body></html>
