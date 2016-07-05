@@ -1,9 +1,7 @@
 package it.academy.ivan.controller;
 
-import it.academy.ivan.dao.AbstractDao;
-import it.academy.ivan.dao.ClientDAOImpl;
-import it.academy.ivan.dao.ClientType;
-import it.academy.ivan.dao.EventDao;
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import it.academy.ivan.dao.*;
 import it.academy.ivan.entity.Cars;
 import it.academy.ivan.entity.Client;
 import it.academy.ivan.logger.PaymentSystemLogger;
@@ -95,9 +93,27 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.POST)
-    public String goLoginPage(ModelAndView model) {
+    public String goLoginPage() {
         return "login";
     }
 
+    @RequestMapping(value = "/gobackuser", method = RequestMethod.POST)
+    public String goBackUser() {
+        return "user";
+    }
+
+    @RequestMapping(value = "/gobackadmin", method = RequestMethod.POST)
+    public String goBackAdmin() {
+        return "main";
+    }
+
+    @RequestMapping(value = "/goshowauto", method = RequestMethod.POST)
+    public ModelAndView goShowAuto() {
+        ModelAndView model = new ModelAndView("showcars");
+        DAOCars cars = new DAOCars();
+        List<Cars> list = cars.getFromDbs(0);
+        model.addObject("carsList", list);
+        return model;
+    }
 
 }

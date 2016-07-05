@@ -41,17 +41,16 @@ ${wrongAction}
 <input type="submit" class="bu bu1" name="reg" value="SignUp"/>
 </form>
 
-<table align="center">
+<div class="table">
+<table>
  <tr>
 <td> Language : <a href="?locale=ru">English</a>|
  <a href="?locale=en">Chinese</a>
 </td>
- <h3>
-  welcome.springmvc : <spring:message code="page.common.input.login" text="default text" />
- </h3>
+
   Current Locale : ${pageContext.response.locale}</table>
  </tr>
-
+</div>
 
 
 

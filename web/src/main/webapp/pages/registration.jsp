@@ -47,18 +47,6 @@
 			<input type="submit" class="bu bu1" value="GoBack" />
 		</form:form>
 
-		<table align="center">
-			<tr>
-				<td> Language : <a href="?locale=ru">English</a>|
-					<a href="?locale=en">Chinese</a>
-				</td>
-				<h3>
-					welcome.springmvc : <spring:message code="page.common.input.login" text="default text" />
-				</h3>
-				Current Locale : ${pageContext.response.locale}</table>
-		</tr>
-
-
 				${operationMessage} 
 			${errorUserExsists}
 				</form>

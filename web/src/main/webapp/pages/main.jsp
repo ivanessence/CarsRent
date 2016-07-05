@@ -18,7 +18,6 @@ Links for admin...<br/>
  <input type="submit" class="bu bu1" name="ee" value="AddAuto"/>
 </form>
 
-<a href="controller?command=gotoaddproduct">Добавить авто</a> <br/>
 <a href='<c:url value="/j_spring_security_logout" />' > Logout</a>
 Debug info - session = ${sessionScope}
 </body></html>

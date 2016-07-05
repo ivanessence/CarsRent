@@ -90,3 +90,8 @@ form {
 	border-radius: 50%;
 }
 
+.table {
+	position: absolute;
+	top: 5%;
+	right: 1%;
+}

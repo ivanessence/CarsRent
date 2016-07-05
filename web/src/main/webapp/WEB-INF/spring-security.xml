@@ -13,7 +13,7 @@
         <intercept-url pattern="/**" access="permitAll"/>
         <intercept-url pattern="/admin**" access="ROLE_USER" />
         <csrf disabled="true"/>
-        <logout logout-url="/j_spring_security_logout" logout-success-url="/login"
+        <logout logout-url="/j_spring_security_logout" logout-success-url="/"
                          invalidate-session="true" />
     </http>
 

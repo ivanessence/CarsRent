@@ -33,7 +33,7 @@
 </form>
 
 <table align="center">
-    УДАЛИТЬ АВТО
+  <td>УДАЛИТЬ АВТО</td>
     <tr>
         <td>Айди:</td>
         <form name="ee" method="POST" action="/delete">
@@ -49,7 +49,9 @@
 </table>
 <tr>
 
-    <td><a href="controller?command=backadmin">Вернуться обратно</a></td>
+    <form name = "eee" method="POST" action="/gobackadmin">
+        <input type="submit" class="bu bu1" name="ee" value="GoBack"/>
+    </form>
 </tr>
 
 </table>

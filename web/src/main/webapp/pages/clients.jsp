@@ -20,8 +20,9 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="controller?command=backadmin">Вернуться обратно</a>
-		<a href="controller?command=logout">Выйти из системы</a>
+		<form name = "eee" method="POST" action="/gobackadmin">
+			<input type="submit" class="bu bu1" name="ee" value="GoBack"/>
+		</form>
 
 	</body>
 </html>
