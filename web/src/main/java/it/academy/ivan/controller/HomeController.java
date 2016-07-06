@@ -1,18 +1,25 @@
 package it.academy.ivan.controller;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import it.academy.ivan.command.IAddProduct;
+import it.academy.ivan.command.IDeleteService;
+import it.academy.ivan.command.IRegService;
+import it.academy.ivan.command.IService;
 import it.academy.ivan.dao.*;
 import it.academy.ivan.entity.Cars;
 import it.academy.ivan.entity.Client;
 import it.academy.ivan.logger.PaymentSystemLogger;
 import it.academy.ivan.managers.ConfigurationManager;
 import it.academy.ivan.managers.MessageManager;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,10 +32,15 @@ import java.util.List;
  */
 @Controller
 public class HomeController {
-
+    @Autowired
+    public IAddProduct serv;
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String welcome(ModelAndView model) {
-        return "login";
+    public ModelAndView welcome(ModelAndView model, @RequestParam(value = "error", required = false) String error) {
+        model.setViewName("login");
+        if (error != null) {
+            model.addObject("error", "Invalid username or password!");
+        }
+        return model;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -41,30 +53,26 @@ public class HomeController {
         return "registration";
     }
 
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String admin(ModelAndView model) {
+        return "main";
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String user(ModelAndView model) {
+        return "user";
+    }
+
     @RequestMapping(value = "/goaddauto", method = RequestMethod.POST)
     public String addauto(ModelAndView model) {
         return "addproduct";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String deleteauto(ModelAndView model, HttpServletRequest request) {
-        String page = null;
-        String id;
-        int idString;
-        id = request.getParameter("id");
-        idString = Integer.valueOf(id);
-        Cars newCar = new Cars(idString);
-        AbstractDao dao = new AbstractDao();
-        dao.delete(newCar);
 
-        page = "addproduct";
-        request.setAttribute("success", MessageManager.getProperty("message.delete"));
-        return page;
-
-    }
 
     @RequestMapping(value = "/addcar", method = RequestMethod.POST)
     public String addcar(HttpServletRequest request) {
+        SessionFactory sessionFactory = null;
         String model;
         String color;
         String year;
@@ -74,8 +82,7 @@ public class HomeController {
         color = request.getParameter("color");
 
         Cars newCar = new Cars(model, year, color);
-        EventDao ev = new EventDao();
-        ev.create(newCar);
+        serv.add(newCar);
         page = "addproduct";
         request.setAttribute("success", MessageManager.getProperty("message.product"));
 

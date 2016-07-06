@@ -3,7 +3,6 @@ package it.academy.ivan.dao;
 
 import it.academy.ivan.entity.Client;
 
-import it.academy.ivan.hibernate.HibernateSessionManager;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;

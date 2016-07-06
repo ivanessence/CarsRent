@@ -17,13 +17,15 @@
     <mvc:resources mapping="/pictures/**" location="/pictures/"/>
     <mvc:resources mapping="/javascript/**" location="/javascript/"/>
 
+    <import resource="classpath*:dao-context.xml"/>
+    <import resource="classpath*:services-context.xml"/>
 
 <context:component-scan base-package="it.academy.ivan.controller"/>
     <mvc:annotation-driven/>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/pages/"
+          p:prefix="/WEB-INF/pages/"
           p:suffix=".jsp"/>
 
 

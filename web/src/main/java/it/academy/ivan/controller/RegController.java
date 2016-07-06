@@ -1,10 +1,12 @@
 package it.academy.ivan.controller;
 
-import it.academy.ivan.dao.EventDao;
+import it.academy.ivan.command.IRegService;
 import it.academy.ivan.entity.Client;
 import it.academy.ivan.logger.PaymentSystemLogger;
 import it.academy.ivan.managers.ConfigurationManager;
 import it.academy.ivan.managers.MessageManager;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,10 +19,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 
-public class RegController {
-
+public class RegController<T> {
+@Autowired
+public IRegService serv;
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createUser(ModelAndView model, HttpServletRequest request) {
+        SessionFactory sessionFactory = null;
         String fio;
         String passport;
         String login;
@@ -36,8 +40,8 @@ public class RegController {
         } else {
             try {
                 Client newClient = new Client(fio, passport, login, password, 1, 0);
-                EventDao ev = new EventDao();
-                ev.create(newClient);
+
+                serv.add(newClient);
 
                 page = ConfigurationManager.getProperty("path.page.registration");
                 request.setAttribute("success", MessageManager.getProperty("message.success"));
