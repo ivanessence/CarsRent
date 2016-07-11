@@ -1,6 +1,6 @@
 //package it.academy.ivan.controller;
 //
-//import it.academy.ivan.dao.ClientDAOImpl;
+
 //import it.academy.ivan.dao.ClientType;
 //import it.academy.ivan.managers.MessageManager;
 //import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@
 //    @RequestMapping(value = "/login", method = RequestMethod.GET)
 //    public String logIn(ModelAndView model, HttpServletRequest request) {
 //        String page = null;
-//        ClientDAOImpl us = new ClientDAOImpl();
+//
 //        // извлечение из запроса логина и пароля
 //        String login = request.getParameter("login");
 //        String pass = request.getParameter("password");

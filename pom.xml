@@ -11,6 +11,9 @@
 	<properties>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<aspectj.version>1.8.4</aspectj.version>
+		<!--<tiles.version>3.0.5</tiles.version>-->
+
+		<apachetiles.version>3.0.5</apachetiles.version>
 	</properties>
 
 	<dependencyManagement>
@@ -172,6 +175,11 @@
 				<version>4.1.0.RELEASE</version>
 			</dependency>
 
+			<dependency>
+				<groupId>org.apache.tiles</groupId>
+				<artifactId>tiles-extras</artifactId>
+				<version>${apachetiles.version}</version>
+			</dependency>
 
 
 		</dependencies>

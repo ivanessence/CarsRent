@@ -8,19 +8,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by Ivan on 06.07.2016.
+ * Created by Ivan on 08.07.2016.
  */
 @Service
-public class RegService implements IRegService {
-public AbstractDao dao;
+public class ShowClients implements IShowClients<Client>{
+
+    public AbstractDao dao;
 
     @Autowired
-    public RegService(AbstractDao dao) {
+    public ShowClients(AbstractDao dao) {
         this.dao = dao;
     }
+
     @Override
-    public void add(Client t) {
-        dao.saveOrUpdate(t);
+    public void add(Client client) {
+
     }
 
     @Override
@@ -30,6 +32,7 @@ public AbstractDao dao;
 
     @Override
     public List<Client> getFromDb(Integer pg) {
-        return null;
+
+        return dao.getFromDb();
     }
 }

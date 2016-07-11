@@ -6,6 +6,8 @@ import it.academy.ivan.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Ivan on 06.07.2016.
  */
@@ -27,5 +29,10 @@ public class DeleteService implements IDeleteService{
     @Override
     public void delete(Cars t) {
         dao.delete(t);
+    }
+
+    @Override
+    public List<Cars> getFromDb(Integer pg) {
+        return null;
     }
 }

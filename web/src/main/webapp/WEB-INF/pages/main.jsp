@@ -1,23 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
+<tiles:insertDefinition name="defaultTemplate"/>
 <head><title>Welcome admin</title></head>
 <body>
 <h3>Welcome, admin</h3>
 <hr/>
- ${user}, hello!
+${pageContext.request.userPrincipal.name} <br/>
+<a href='<c:url value="/j_spring_security_logout" />'> Logout</a>
 <hr/>
-Links for admin...<br/>
 
-<form name = "ee" method="POST" action="/clients">
- <input type="submit" class="bu bu1" name="ee" value="ShowClients"/>
+<form name="ee" method="POST" action="/clients">
+    <input type="submit" class="bu bu1" name="ee" value="ShowClients"/>
 </form>
 
-<form name = "e" method="POST" action="/goaddauto">
- <input type="submit" class="bu bu1" name="ee" value="AddAuto"/>
+<form name="e" method="POST" action="/goaddauto">
+    <input type="submit" class="bu bu1" name="ee" value="AddAuto"/>
 </form>
 
-<a href='<c:url value="/j_spring_security_logout" />' > Logout</a>
-Debug info - session = ${sessionScope}
-</body></html>
+</body>
+</html>

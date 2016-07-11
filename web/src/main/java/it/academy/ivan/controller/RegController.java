@@ -20,8 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 
 public class RegController<T> {
-@Autowired
-public IRegService serv;
+    @Autowired
+    public IRegService reg;
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createUser(ModelAndView model, HttpServletRequest request) {
         SessionFactory sessionFactory = null;
@@ -40,15 +41,10 @@ public IRegService serv;
         } else {
             try {
                 Client newClient = new Client(fio, passport, login, password, 1, 0);
-
-                serv.add(newClient);
-
-                page = ConfigurationManager.getProperty("path.page.registration");
+                reg.add(newClient);
                 request.setAttribute("success", MessageManager.getProperty("message.success"));
-
             } catch (NumberFormatException e) {
                 PaymentSystemLogger.INSTANCE.logError(getClass(), e.getMessage());
-                page = ConfigurationManager.getProperty("path.page.login");
             }
         }
         return "registration";

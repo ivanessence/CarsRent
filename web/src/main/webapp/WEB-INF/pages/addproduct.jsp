@@ -1,7 +1,9 @@
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link href="css/style.css" rel="stylesheet" type="text/css"/>
+<tiles:insertDefinition name="defaultTemplate"/>
 <head>
     <title>Регистрация</title>
 </head>
@@ -40,8 +42,8 @@
 
             <td><input type="text" name="id" value="" size="20"/></td>
             <td><input type="submit" name="command" value="deleteproduct"/></td>
-            ${success}
-            ${operationMessage}
+            <td>${success}</td>
+            <td>${operationMessage}</td>
 
         </form>
 

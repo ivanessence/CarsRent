@@ -1,14 +1,13 @@
 package it.academy.ivan.dao;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import it.academy.ivan.entity.Client;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
-import static it.academy.ivan.hibernate.HibernateUtil.*;
+
 
 /**
  * Created by Ivan on 15.06.2016.
@@ -31,11 +30,10 @@ public class EventDao <T> implements AbstractDao<T> {
         try {
             Session session = currentSession();
             Transaction tr = session.beginTransaction();
-
             session.saveOrUpdate(obj);
             tr.commit();
         } catch (HibernateException e) {
-            rollbackTransaction();
+
         }
         return obj;
     }
@@ -45,11 +43,44 @@ public class EventDao <T> implements AbstractDao<T> {
         try {
             Session session = currentSession();
             Transaction tr = session.beginTransaction();
-            beginTransaction();
             session.delete(car);
             tr.commit();
         } catch (HibernateException e) {
-            rollbackTransaction();
+
         }
+    }
+
+    @Override
+    public List<T> getFromDb() {
+
+        List<T> list = null;
+        try {
+            Session session = currentSession();
+            Transaction tr = session.beginTransaction();
+            String hql = "From Client";
+            Query qu = session.createQuery(hql);
+            list = qu.list();
+        } catch (HibernateException e) {
+
+        }
+        return list;
+
+    }
+
+    @Override
+    public List<T> show(Integer pg) {
+        List<T> list = null;
+        try {
+            Session session = currentSession();
+            Transaction tr = session.beginTransaction();
+            String hql = "From Cars";
+            Query qu = session.createQuery(hql);
+            qu.setFirstResult(pg);
+            qu.setMaxResults(4);
+            list = qu.list();
+        } catch (HibernateException e) {
+
+        }
+        return list;
     }
 }

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class DeleteController {
     @Autowired
-    public IDeleteService ser;
+    public IDeleteService del;
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String deleteauto(ModelAndView model, HttpServletRequest request) {
@@ -29,9 +29,7 @@ public class DeleteController {
         id = request.getParameter("id");
         idString = Integer.valueOf(id);
         Cars newCar = new Cars(idString);
-        ser.delete(newCar);
-
-
+        del.delete(newCar);
         page = "addproduct";
         request.setAttribute("success", MessageManager.getProperty("message.delete"));
         return page;

@@ -14,7 +14,10 @@
     <http auto-config="true">
 
         <intercept-url pattern="/main" access="hasAuthority('1')" />
+        <intercept-url pattern="/clients" access="hasAuthority('1')" />
+        <intercept-url pattern="/addproduct" access="hasAuthority('1')" />
         <intercept-url pattern="/user" access="hasAuthority('0')" />
+        <intercept-url pattern="/showcars" access="hasAuthority('0')" />
         <csrf disabled="true"/>
         <form-login login-page="/"
                     login-processing-url="/j_spring_security_check"

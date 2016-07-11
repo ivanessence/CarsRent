@@ -8,21 +8,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by Ivan on 06.07.2016.
+ * Created by Ivan on 11.07.2016.
  */
 @Service
-public class AddProduct implements IAddProduct {
+public class ShowCars implements IShowCars<Cars> {
 
     public AbstractDao dao;
 
     @Autowired
-    public AddProduct(AbstractDao dao) {
+    public ShowCars(AbstractDao dao) {
         this.dao = dao;
     }
 
     @Override
-    public void add(Cars t) {
-        dao.saveOrUpdate(t);
+    public void add(Cars cars) {
+
     }
 
     @Override
@@ -32,6 +32,6 @@ public class AddProduct implements IAddProduct {
 
     @Override
     public List<Cars> getFromDb(Integer pg) {
-        return null;
+        return dao.show(pg);
     }
 }
